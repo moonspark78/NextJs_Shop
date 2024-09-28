@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import SearchBox from '../Helper/SearchBox'
 
 const Nav = () => {
   return (
@@ -10,6 +11,11 @@ const Nav = () => {
             <Link href="/">
                 <Image src="/images/logo.png" alt='logo' width={140} height={140}/>
             </Link>
+            {/* icon */}
+            <div className='flex items-center space-x-6'>
+              {/* SearchBox */}
+                <SearchBox/>
+            </div>
         </div>
     </div>
   )
