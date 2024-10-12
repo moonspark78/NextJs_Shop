@@ -17,8 +17,8 @@ const Nav = () => {
             {/* icon */}
             <div className='flex items-center space-x-6'>
               {/* SearchBox */}
-                <SearchBox/>
-                <HeartIcon size={20} cursor={"pointer"}/>
+                <SearchBox />
+                <HeartIcon size={26} cursor={"pointer"}/>
                 {/* ShoppingCartButton */}
                   <ShoppingCartButton/>
                 {/* UserButton */}
@@ -32,7 +32,7 @@ const Nav = () => {
                     {/* Not signIn */}
                     <SignedOut>
                       <SignInButton>
-                          <UserIcon cursor={"pointer"}  size={20}/>
+                          <UserIcon cursor={"pointer"}  size={26}/>
                       </SignInButton>
                     </SignedOut>
 

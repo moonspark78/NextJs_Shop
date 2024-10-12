@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '../ui/button'
+import Image from 'next/image'
 
 const Hero = () => {
   return (
@@ -25,6 +26,16 @@ const Hero = () => {
                         Explor More
                     </Button>
                 </div>
+            </div>
+            {/* Image Content */}
+            <div className='hidden lg:block'>
+                <Image
+                    src="/images/hero.svg"
+                    alt='images'
+                    width={600}
+                    height={600}
+                    className='lg:h-[50%] lg:w-[50%] xl:h-[80%] xl:w-[80%]'
+                />
             </div>
         </div>
     </div>
