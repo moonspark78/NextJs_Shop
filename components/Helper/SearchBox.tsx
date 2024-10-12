@@ -6,7 +6,7 @@ const SearchBox = () => {
   return (
     <Dialog>
         <DialogTrigger>
-            <SearchIcon size={20} cursor={"pointer"}/>
+            <SearchIcon size={26} cursor={"pointer"}/>
         </DialogTrigger>
         <DialogContent>
             <form>

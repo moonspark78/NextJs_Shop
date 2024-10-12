@@ -8,7 +8,7 @@ const ShoppingCartButton = () => {
         flex-col text-[9px] text-white rounded-full'>
             6
         </span>
-        <ShoppingCartIcon cursor={"pointer"} size={20}/>
+        <ShoppingCartIcon cursor={"pointer"} size={26}/>
     </div>
   )
 }
