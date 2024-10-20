@@ -28,7 +28,7 @@ const Hero = () => {
                 </div>
             </div>
             {/* Image Content */}
-            <div className='hidden lg:block'>
+            <div /* className='hidden lg:block' */>
                 <Image
                     src="/images/hero.svg"
                     alt='images'
