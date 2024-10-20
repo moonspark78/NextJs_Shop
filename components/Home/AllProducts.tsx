@@ -18,10 +18,11 @@ const AllProducts = () => {
             try{
                 const products: Product[] = await getAllProduct();
                 setProducts(products);
+                
             }catch(error){
                 console.log(error);
             }finally{
-                setLoading(loading);
+                setLoading(false);
             }
         }
         getData();
