@@ -5,6 +5,7 @@ import {Product} from "@/type"
 import Image from 'next/image';
 import Link from 'next/link';
 import { StarIcon } from 'lucide-react';
+import { Button } from '../ui/button';
 
 
 type Props = {
@@ -28,6 +29,7 @@ const ProductCard = ({product}:Props) => {
                 className='w-[80%] h-[80%] object-contain'
             />
         </div>
+        {/* Category */}
         <p className='mt-5 text-xs capitalize text-gray-600'>
             {product.category}
         </p>
@@ -54,6 +56,22 @@ const ProductCard = ({product}:Props) => {
                 )
             })
            }
+        </div>
+
+        {/* Pricing */}
+
+        <div className='flex mt-2 items-center space-x-2'>
+            <p className='text-black text-base line-through font-semibold opacity-50'>
+                {`$${(product.price + 10).toFixed(2)}`}
+            </p>
+            <p className='text-black text-lg font-bold opacity-80'>
+                ${product.price}
+            </p>
+        </div>
+
+        {/* Button */}
+        <div>
+            <Button></Button>
         </div>
 
     </div>
