@@ -4,7 +4,7 @@ import React from 'react'
 import {Product} from "@/type"
 import Image from 'next/image';
 import Link from 'next/link';
-import { StarIcon } from 'lucide-react';
+import { Heart, ShoppingBag, StarIcon } from 'lucide-react';
 import { Button } from '../ui/button';
 
 
@@ -70,8 +70,13 @@ const ProductCard = ({product}:Props) => {
         </div>
 
         {/* Button */}
-        <div>
-            <Button></Button>
+        <div className='mt-4 flex items-center space-x-2'>
+            <Button size={"icon"}>
+                <ShoppingBag size={20}/>
+            </Button>
+            <Button size={"icon"} className='bg-red-500'>
+                <Heart size={20}/>
+            </Button>
         </div>
 
     </div>
