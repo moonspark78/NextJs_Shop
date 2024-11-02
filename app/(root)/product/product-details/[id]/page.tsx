@@ -33,9 +33,10 @@ const ProductDetails =  async({ params }: { params: { id: string}}) => {
                 <h1 className='lg:text-3xl text-2xl font-bold text-black'>
                     {singleproduct.title}
                 </h1>
+                {/* Rating */}
                 <div className='mt-2 flex items-center space-x-2'>
                     <div className='flex items-center'>
-                            {starArray.map((star) =>{
+                            {starArray.map(() =>{
                                 return (
                                     <StarIcon
                                         key={Math.random() * 5000}
@@ -50,6 +51,13 @@ const ProductDetails =  async({ params }: { params: { id: string}}) => {
                         ({singleproduct?.rating.count} Reviews)
                     </p>
                 </div>
+                {/* Line */}
+                <span className='w-4/5 bg-gray-400 h-[1.6px] rounded-lg block mt-4 opacity-20 mb-4'></span>
+                {/* Price */}
+                <h1 className='lg:text-6xl text-3xl md:text-4xl text-blue-950 font-bold'>
+                    ${singleproduct?.price.toFixed(2)}
+                </h1>
+                {/* Description */}
             </div>
         </div>
     </div>  
