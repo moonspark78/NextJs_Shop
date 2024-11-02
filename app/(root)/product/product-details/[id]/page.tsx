@@ -7,7 +7,7 @@ import React from 'react'
 const ProductDetails =  async({ params }: { params: { id: string}}) => {
     const id = params.id;
     const singleproduct: Product = await getGetASingleProduct(id);
-    const relatedProduct: Product[] = await getRelatedProduct(singleproduct.category)
+    const _relatedProduct: Product[] = await getRelatedProduct(singleproduct.category)
     
     const num = Math.round(singleproduct?.rating?.rate);
     const starArray = new Array(num).fill(0);
@@ -58,6 +58,18 @@ const ProductDetails =  async({ params }: { params: { id: string}}) => {
                     ${singleproduct?.price.toFixed(2)}
                 </h1>
                 {/* Description */}
+                <p className='mt-4 text-base text-black opacity-70'>
+                    {singleproduct?.description}
+                </p>
+                <p className='mt-4 text-sm text-black opacity-70 font-semibold'>
+                    Category : {singleproduct?.category}
+                </p>
+                <p className='mt-2 text-sm text-black opacity-70 font-semibold'>
+                    Tag : Shop, WDN
+                </p>
+                <p className='mt-2 text-sm text-black opacity-70 font-semibold'>
+                    SKU : {Math.random()*500}
+                </p>
             </div>
         </div>
     </div>  
