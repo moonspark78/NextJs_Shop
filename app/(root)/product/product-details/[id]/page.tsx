@@ -3,11 +3,13 @@ import { Product } from '@/type';
 import { StarIcon } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react'
+import AddToCart from './add-cart';
+import ProductCard from '@/components/Home/ProductCard';
 
 const ProductDetails =  async({ params }: { params: { id: string}}) => {
     const id = params.id;
     const singleproduct: Product = await getGetASingleProduct(id);
-    const _relatedProduct: Product[] = await getRelatedProduct(singleproduct.category)
+    const relatedProduct: Product[] = await getRelatedProduct(singleproduct.category)
     
     const num = Math.round(singleproduct?.rating?.rate);
     const starArray = new Array(num).fill(0);
@@ -70,6 +72,16 @@ const ProductDetails =  async({ params }: { params: { id: string}}) => {
                 <p className='mt-2 text-sm text-black opacity-70 font-semibold'>
                     SKU : {Math.random()*500}
                 </p>
+                {/* AddtoCart Button */}
+                <AddToCart/>
+            </div>
+        </div>
+        <div className='w-4/5 mt-16 mx-auto'>
+            <h1 className='text-2xl text-black font-semibold'>Realated Product</h1>
+            <div className='mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12'>
+                    {relatedProduct.map((product) =>{
+                        return <ProductCard key={product.id} product={product}/>
+                    })}
             </div>
         </div>
     </div>  
