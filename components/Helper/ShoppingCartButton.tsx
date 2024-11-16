@@ -5,6 +5,7 @@ import { ShoppingBagIcon } from "lucide-react";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import CartSidebar from "./CartSidebar";
 
 const ShoppingCartButton = () => {
   const items = useSelector((state: RootState) => state.cart.items);
@@ -23,8 +24,8 @@ const ShoppingCartButton = () => {
           <ShoppingBagIcon cursor={"pointer"} size={26} />
         </div>
       </SheetTrigger>
-      <SheetContent>
-        <div>Hi</div>
+      <SheetContent className="overflow-auto h-full">
+        <CartSidebar items={items} />
       </SheetContent>
     </Sheet>
   );
