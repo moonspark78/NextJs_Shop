@@ -1,6 +1,9 @@
 import { CartItem } from '@/store/cartSlice'
 import Image from 'next/image'
 import React from 'react'
+import { Button } from '../ui/button'
+import Link from 'next/link'
+import { SheetClose } from '../ui/sheet'
 
 
 type Props ={
@@ -48,11 +51,23 @@ const CartSidebar = ({items}:Props) => {
                                 {/* title */}
                                 <h1 className='text-sm w-4/5 fond-semibold truncate'>{item?.title}</h1>
                                 {/* Price */}
-                                <h1 className='text-base font-bold mb-2'>${(item?.price * item?.quantity).toFixed(2)}</h1>
+                                <h1 className='text-base font-bold text-blue-950'>${(item?.price * item?.quantity).toFixed(2)}</h1>
+                                {/* Quantity */}
+                                <h1 className='text-base font-bold mb-2'>Quantity : {item?.quantity}</h1>
+                                {/* Two button one for add & other for remove */}
+                                <div className='flex items-center space-x-4'>
+                                    <Button size={"sm"} variant={"destructive"}>Remove</Button>
+                                    <Button size={"sm"} >Add</Button>
+                                </div>
                             </div>
                         </div>
                     )
                 })}
+                <Link href="/cart">
+                  <SheetClose>
+                    <Button className='w-full mb-6 mt-6'>View All Cart</Button>
+                  </SheetClose>
+                </Link>
             </div>
         )}
     </div>
