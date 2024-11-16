@@ -1,16 +1,25 @@
-import { ShoppingCartIcon } from 'lucide-react'
-import React from 'react'
+"use client";
+
+import { RootState } from "@/store/store";
+import { ShoppingBagIcon } from "lucide-react";
+import React from "react";
+import { useSelector } from "react-redux";
 
 const ShoppingCartButton = () => {
-  return (
-    <div className='relative'>
-        <span className='absolute -top-3 -right-2 w-4 h-4 bg-red-500 text-center flex items-center justify-center 
-        flex-col text-[9px] text-white rounded-full'>
-            6
-        </span>
-        <ShoppingCartIcon cursor={"pointer"} size={26}/>
-    </div>
-  )
-}
+  const items = useSelector((state: RootState) => state.cart.items);
+  const totalQuantity = items.reduce((total, item) => total + item.quantity, 0);
 
-export default ShoppingCartButton
+  return (
+    <div className="relative">
+      <span
+        className="absolute -top-3 -right-2 w-4 h-4 bg-red-500 text-center flex items-center justify-center 
+        flex-col text-[9px] text-white rounded-full"
+      >
+        {totalQuantity}
+      </span>
+      <ShoppingBagIcon cursor={"pointer"} size={26} />
+    </div>
+  );
+};
+
+export default ShoppingCartButton;
