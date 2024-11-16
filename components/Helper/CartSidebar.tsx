@@ -1,9 +1,10 @@
-import { CartItem } from '@/store/cartSlice'
+import { addItem, CartItem, removeItem } from '@/store/cartSlice'
 import Image from 'next/image'
 import React from 'react'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 import { SheetClose } from '../ui/sheet'
+import { useDispatch } from 'react-redux'
 
 
 type Props ={
@@ -11,6 +12,14 @@ type Props ={
 }
 
 const CartSidebar = ({items}:Props) => {
+
+    const dispatch = useDispatch();
+
+    const addCartHandler = (item:CartItem) =>dispatch(addItem(item));
+    const removeCartHandler = (id:number) =>dispatch(removeItem({id}))
+
+
+
   return (
     <div className='mt-6 h-full mb-6'>
         {/* Heading */}
@@ -56,8 +65,8 @@ const CartSidebar = ({items}:Props) => {
                                 <h1 className='text-base font-bold mb-2'>Quantity : {item?.quantity}</h1>
                                 {/* Two button one for add & other for remove */}
                                 <div className='flex items-center space-x-4'>
-                                    <Button size={"sm"} variant={"destructive"}>Remove</Button>
-                                    <Button size={"sm"} >Add</Button>
+                                    <Button onClick={() => {removeCartHandler(item.id)}} size={"sm"} variant={"destructive"}>Remove</Button>
+                                    <Button onClick={() => {addCartHandler(item)}} size={"sm"} >Add</Button>
                                 </div>
                             </div>
                         </div>
