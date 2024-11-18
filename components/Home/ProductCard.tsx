@@ -8,8 +8,9 @@ import { Heart, ShoppingBag, StarIcon } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useDispatch } from 'react-redux';
 import { addItem } from '@/store/cartSlice';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store/store';
+/* import { useSelector } from 'react-redux';
+import { RootState } from '@/store/store'; */
+import { useToast } from '@/hooks/use-toast';
 
 
 type Props = {
@@ -21,11 +22,16 @@ const ProductCard = ({product}:Props) => {
 
     const num = Math.round(product.rating.rate)
     const ratingArry = new Array(num).fill(0);
+    const { toast } = useToast()
 
     const dispatch = useDispatch();
 
 
     const addToCartHandler = (product:Product) =>{
+        toast({
+            title: "Item Added to Cart",
+            description: "Success",
+          })
         dispatch(addItem(product));
     }
 
