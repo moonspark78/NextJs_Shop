@@ -30,7 +30,7 @@ const ProductCard = ({product}:Props) => {
     const addToCartHandler = (product:Product) =>{
         toast({
             title: "Item Added to Cart",
-            description: "Success",
+            variant: "success",
           })
         dispatch(addItem(product));
     }
