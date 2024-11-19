@@ -28,6 +28,7 @@ const Cart = () => {
 
   return (
     <div className='mt-8 min-h-[60vh]'>
+      {/* if cart doesn't exit */}
       {items.length == 0  && (
         <div className='flex items-center w-full h-[80vh] flex-col justify-center'>
           <Image
@@ -42,6 +43,17 @@ const Cart = () => {
               Shop Now
             </Button>
           </Link>
+        </div>
+      )}
+      {/* If cart item exist */}
+      {items.length > 0 && (
+        <div className='md:w-4/5 w-[95%] mx-auto grid grid-cols-1 lg:grid-cols-6 gap-12'>
+          {/* Cart Items */}
+          <div className='rounded-lg shadow-md overflow-hidden xl:col-span-4'>
+            <h1 className='p-4 text-xl sm:text-2xl md:text-3xl font-bold text-white bg-blue-700'>
+                Your Cart ({totalQuantity} Items)
+            </h1>
+          </div>
         </div>
       )}
     </div>
