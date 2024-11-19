@@ -1,6 +1,9 @@
 "use client";
 
+import { Button } from '@/components/ui/button';
 import { RootState } from '@/store/store';
+import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 import { useSelector } from 'react-redux';
 
@@ -24,7 +27,24 @@ const Cart = () => {
     
 
   return (
-    <div>Cart</div>
+    <div className='mt-8 min-h-[60vh]'>
+      {items.length == 0  && (
+        <div className='flex items-center w-full h-[80vh] flex-col justify-center'>
+          <Image
+            src="/images/cart.svg"
+            alt='empty-cart'
+            width={400}
+            height={400}
+          />
+          <h1 className='mt-8 text-2xl font-semibold'>Your Cart is empty</h1>
+          <Link href="/">
+            <Button className='mt-4'>
+              Shop Now
+            </Button>
+          </Link>
+        </div>
+      )}
+    </div>
   )
 }
 
