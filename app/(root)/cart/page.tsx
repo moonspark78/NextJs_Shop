@@ -86,8 +86,20 @@ const Cart = () => {
           {/* Cart Summary */}
           <div className='lg:col-span-2'>
             <div className='bg-indigo-950 sticky top-[25vh] p-6 rounded-lg'>
-              <h1>Summary</h1>
-              <div></div>
+              <h1 className='text-center mt-8 mb-8 text-white text-xl font-semibold'>Summary</h1>
+              <div className='w-full h-[1.2px] bg-white bg-opacity-20'></div>
+              <div className='flex mt-4 text-xl uppercase font-semibold text-white items-center justify-between'>
+                  <span>SubTotal</span>
+                  <span>${totalPrice}</span>
+              </div>
+              <div className='flex mt-10 mb-10 text-xl uppercase font-semibold text-white items-center justify-between'>
+                  <span>VAT</span>
+                  <span>${vat}</span>
+              </div>
+              <div className='flex mb-6 text-xl uppercase font-semibold text-white items-center justify-between'>
+                  <span>Shipping</span>
+                  <span>FREE</span>
+              </div>
             </div>
           </div>
         </div>
