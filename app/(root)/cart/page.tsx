@@ -1,14 +1,18 @@
 "use client";
 
 import { Button } from '@/components/ui/button';
+import { addItem, CartItem, removeItem } from '@/store/cartSlice';
 import { RootState } from '@/store/store';
 import { useUser } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
 const Cart = () => {
+
+  const dispatch = useDispatch();
 
     // Get our Cart items
     const items = useSelector((state: RootState) => state.cart.items);
@@ -28,7 +32,17 @@ const Cart = () => {
 
     //Get authenticate user
     const {user} = useUser();
-    
+
+    //Add Item
+    const addItemHandler = (item: CartItem) => {
+      dispatch(addItem(item));
+    };
+    //Remove Item
+    const removeItemHandler = (id: number) => {
+      dispatch(removeItem({id}));
+    };
+
+
 
   return (
     <div className='mt-8 min-h-[60vh]'>
@@ -76,8 +90,12 @@ const Cart = () => {
                       <h1 className='md:text-lg text-sm font-semibold'>Quantity : {item.quantity}</h1>
 
                       <div className='flex items-center mt-4 space-x-2'>
-                        <Button>Add More</Button>
-                        <Button variant={"destructive"}>Remove</Button>
+                        <Button onClick={() => {addItemHandler(item)}}>Add More</Button>
+                        <Button 
+                          variant={"destructive"} 
+                          onClick={() => {removeItemHandler(item.id)}}>
+                            Remove
+                        </Button>
                       </div>
 
                     </div>
@@ -114,6 +132,10 @@ const Cart = () => {
                   Sign In to Checkout
                 </Button>
                 </Link>
+              )}
+              {user && (
+                // Paypal Button
+                <Button className='w-full bg-orange-500'>Paypal</Button>
               )}
             </div>
           </div>
