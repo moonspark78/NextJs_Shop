@@ -85,7 +85,10 @@ const Cart = () => {
           </div>
           {/* Cart Summary */}
           <div className='lg:col-span-2'>
-            <div></div>
+            <div className='bg-indigo-950 sticky top-[25vh] p-6 rounded-lg'>
+              <h1>Summary</h1>
+              <div></div>
+            </div>
           </div>
         </div>
       )}
