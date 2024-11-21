@@ -2,9 +2,9 @@
 
 import { Button } from '@/components/ui/button';
 import { RootState } from '@/store/store';
+import { useUser } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
-import { it } from 'node:test';
 import React from 'react'
 import { useSelector } from 'react-redux';
 
@@ -25,6 +25,9 @@ const Cart = () => {
     const totalPriceWithVat = (+totalPrice + +vat).toFixed(2);
 
     console.log({totalPrice, vat, totalPriceWithVat});
+
+    //Get authenticate user
+    const {user} = useUser();
     
 
   return (
@@ -86,7 +89,7 @@ const Cart = () => {
           {/* Cart Summary */}
           <div className='lg:col-span-2'>
             <div className='bg-indigo-950 sticky top-[25vh] p-6 rounded-lg'>
-              <h1 className='text-center mt-8 mb-8 text-white text-xl font-semibold'>Summary</h1>
+              <h1 className='text-center mt-8 mb-8 text-white text-2xl font-semibold'>Summary</h1>
               <div className='w-full h-[1.2px] bg-white bg-opacity-20'></div>
               <div className='flex mt-4 text-xl uppercase font-semibold text-white items-center justify-between'>
                   <span>SubTotal</span>
@@ -100,6 +103,18 @@ const Cart = () => {
                   <span>Shipping</span>
                   <span>FREE</span>
               </div>
+              <div className='w-full h-[1.2px] bg-white bg-opacity-20'></div>
+              <div className='flex mt-6 mb-6 text-xl uppercase font-semibold text-white items-center justify-between'>
+                  <span>Total</span>
+                  <span>${totalPriceWithVat}</span>
+              </div>
+              {!user && (
+                <Link href="/sign-in">
+                <Button className='bg-orange-500 w-full'>
+                  Sign In to Checkout
+                </Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
